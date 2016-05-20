@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <title>Userdash Quotes</title>
+  </head>
+  <body>
+    <div id="container">
+          <h1>Welcome {{session['name']}}!</h1>
+          <a href="/logout">Logout</a>
+          <div id="notfav">
+            <fieldset>
+            <h4>Quoteable Quotes</h4>
+
+              <div class="notFavquotes">
+                <p>{{session['author']}}</p>
+                <p>{{session['message']}}</p>
+                <p>Posted by: <a href="/users"></a></p>
+
+                <p><a href="/success"><button>Add quote to my list</button></a></p>
+
+              </div>
+          </div>
+        </fieldset>
+
+        <div id="faves">
+
+          <fieldset>
+            <legend>Your Favorite Quotes</legend>
+
+            <div class="favquotes">
+
+              <p> {{session['author']}}</p>
+              <p> {{session['message']}}</p>
+              <p>Posted by: <a href="/users/<poster_id>"></a>
+
+                <p><a href="/success"><button>Remove from my list</button></a></p>
+              </div>
+
+          </fieldset>
+
+        </div>
+
+          <fieldset>
+            <legend>Contribute a Quote</legend>
+            <form action="/addQuote" method="POST">
+              <label>Quoted By/Author:</label> <input type="text" name="author"></p>
+              <label>Message/Quote:</label> <textarea name="message" cols="30" rows="4"></textarea>
+              <input type="hidden" name="poster_id" value="">
+              <input type="submit" value="Submit">
+            </form>
+          </fieldset>
+        </div>
+  </body>
+</html>
